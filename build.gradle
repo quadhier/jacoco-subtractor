@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.jacoco:org.jacoco.core:0.8.11'
+}
+
+application {
+    mainClass = 'JacocoExecSubtractor'
+}
+
+// Configure the shadow plugin to bundle application
+// and its dependencies into a single JAR
+shadowJar {
+    archiveBaseName.set('jacoco-subtractor')
+    archiveVersion.set('')
+    archiveClassifier.set('')
+}
